@@ -1,3 +1,98 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        /* primary colors */
+        --primary-50: #f4ebff;
+        --primary-100: #e8d8ff;
+        --primary-200: #ddc4ff;
+        --primary-300: #d2b1ff;
+        --primary-400: #c69dff;
+        --primary-500: #bb8aff;
+        --primary-600: #9548ff;
+        --primary-700: #6f07ff;
+        --primary-800: #5200c4;
+        --primary-900: #370083;
+        --primary-999: #1b0042;
+
+        /* secondary colors */
+        --secondary-50: #ebffed;
+        --secondary-100: #d8ffdc;
+        --secondary-200: #c4ffca;
+        --secondary-300: #b1ffb9;
+        --secondary-400: #9dffa7;
+        --secondary-500: #8aff96;
+        --secondary-600: #48ff5b;
+        --secondary-700: #07ff20;
+        --secondary-800: #00c414;
+        --secondary-900: #00830d;
+        --secondary-999: #004207;
+
+        /* tertiary colors */
+        --tertiary-50: #e0e7ff;
+        --tertiary-100: #c1ceff;
+        --tertiary-200: #a2b6ff;
+        --tertiary-300: #829eff;
+        --tertiary-400: #6385ff;
+        --tertiary-500: #446dff;
+        --tertiary-600: #0e43ff;
+        --tertiary-700: #002fd7;
+        --tertiary-800: #0023a2;
+        --tertiary-900: #00186c;
+        --tertiary-999: #000c36;
+
+        /* warning colors */
+        --warning-50: #fff8de;
+        --warning-100: #fff0bc;
+        --warning-200: #ffe99b;
+        --warning-300: #ffe27a;
+        --warning-400: #ffda58;
+        --warning-500: #ffd337;
+        --warning-600: #ffc803;
+        --warning-700: #cfa100;
+        --warning-800: #9b7900;
+        --warning-900: #675100;
+        --warning-999: #342800;
+
+        /* danger colors */
+        --danger-50: #ffebeb;
+        --danger-100: #ffd8d8;
+        --danger-200: #ffc4c4;
+        --danger-300: #ffb1b1;
+        --danger-400: #ff9d9d;
+        --danger-500: #ff8a8a;
+        --danger-600: #ff4848;
+        --danger-700: #ff0707;
+        --danger-800: #c40000;
+        --danger-900: #830000;
+        --danger-999: #420000;
+
+        /* neutral colors */
+        --neutral-50: #f7f5f9;
+        --neutral-100: #e7e2ed;
+        --neutral-200: #d7cfe2;
+        --neutral-300: #c7bcd6;
+        --neutral-400: #bfb2d0;
+        --neutral-500: #8d76ab;
+        --neutral-600: #755b96;
+        --neutral-700: #5d4978;
+        --neutral-800: #46375a;
+        --neutral-900: #2f253c;
+        --neutral-999: #17121e;
+
+        /* neutral Variant colors */
+        --neutral-variant-50: #f9f9f9;
+        --neutral-variant-100: #dcdcdc;
+        --neutral-variant-200: #b8b8b8;
+        --neutral-variant-300: #959595;
+        --neutral-variant-400: #727272;
+        --neutral-variant-500: #4e4e4e;
+        --neutral-variant-600: #2b2b2b;
+        --neutral-variant-700: #242424;
+        --neutral-variant-800: #161616;
+        --neutral-variant-900: #0e0e0e;
+        --neutral-variant-999: #070707;
+    }
+}
