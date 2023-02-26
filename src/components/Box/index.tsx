@@ -7,7 +7,8 @@ interface BoxProps {
         | 'main'
         | 'footer'
         | 'header'
-        | 'nav';
+        | 'nav'
+        | 'span';
     className?: string;
     children?: React.ReactNode;
 }
