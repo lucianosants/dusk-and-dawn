@@ -96,3 +96,14 @@
         --neutral-variant-999: #070707;
     }
 }
+
+@layer components {
+    .cart__notification {
+        @apply relative text-neutral-variant-50 hover:text-neutral-variant-100;
+    }
+
+    .cart__notification::before {
+        content: attr(data-count);
+        @apply absolute right-[-0.6rem] text-xs top-[-0.5rem] bg-danger-600 justify-center items-center w-5 h-5 rounded-full flex;
+    }
+}
