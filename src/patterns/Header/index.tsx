@@ -10,7 +10,7 @@ import Box from '@/src/components/Box';
 import Text from '@/src/components/Text';
 
 export default function Header() {
-    const [count, setCount] = useState(15);
+    const [count, setCount] = useState(0);
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
@@ -21,9 +21,9 @@ export default function Header() {
         <Box className="fixed flex justify-center w-full h-16 bg-primary-600">
             <Box
                 as="header"
-                className="flex items-center justify-between flex-1 h-full max-w-5xl px-4">
+                className="container flex items-center justify-between flex-1 h-full px-4">
                 <Link href="/">
-                    <Text className="text-2xl italic font-black text-primary-50 hover:opacity-90">
+                    <Text className="text-2xl italic font-black text-white hover:opacity-90">
                         Dusk&Dawn
                     </Text>
                 </Link>
@@ -64,7 +64,7 @@ export default function Header() {
                         </Text>
                     </Link>
 
-                    <Link href="#">
+                    <Link href="/auth/register">
                         <Text
                             as="span"
                             className="text-neutral-variant-50 hover:text-neutral-variant-100">

@@ -95,6 +95,11 @@
         --neutral-variant-900: #0e0e0e;
         --neutral-variant-999: #070707;
     }
+
+    .p-container {
+        padding-block: calc(4rem * 1.5);
+        padding-inline: 1rem;
+    }
 }
 
 @layer components {
