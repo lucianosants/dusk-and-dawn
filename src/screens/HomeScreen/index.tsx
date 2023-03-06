@@ -5,6 +5,7 @@ import data from '@/_data/homeScreen/pt-br.json';
 
 import Container from '@/src/components/Container';
 import Box from '@/src/components/Box';
+import Hero from '@/src/components/Hero';
 import Section from '@/src/components/Section';
 
 type Categories = 'technology' | 'house & decoration' | 'clothes';
@@ -12,6 +13,9 @@ type Categories = 'technology' | 'house & decoration' | 'clothes';
 export default function HomeScreen() {
     const [currentCategory, setCurrentCategory] =
         useState<Categories>('technology');
+
+    const { body } = data;
+    const { title, subtitle, description, image } = body.hero;
 
     const handleCategoryChange = (category: string) => {
         if (category === 'Tecnologia') setCurrentCategory('technology');
@@ -22,15 +26,22 @@ export default function HomeScreen() {
 
     return (
         <Container isCol>
+            <Hero
+                title={title}
+                subtitle={subtitle}
+                description={description}
+                image={image}
+            />
+
             <Box className="flex flex-col gap-8">
-                <h2 className="text-xl font-bold text-neutral-800">
+                <h2 className="text-2xl font-bold text-neutral-800">
                     {data.body.title_category}
                 </h2>
 
                 <ToggleGroup.Root
                     className="flex flex-wrap gap-2 pb-3"
                     type="single">
-                    {data.body.categories.map((category, i) => {
+                    {body.categories.map((category, i) => {
                         return (
                             <ToggleGroup.Item
                                 key={`${i} - ${category}`}

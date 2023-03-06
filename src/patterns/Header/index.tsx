@@ -18,12 +18,12 @@ export default function Header() {
     };
 
     return (
-        <Box className="fixed flex justify-center w-full h-16 bg-primary-600">
+        <Box className="fixed flex justify-center w-full h-16 bg-gradient-to-l from-primary-600 to-danger-500">
             <Box
                 as="header"
                 className="container flex items-center justify-between flex-1 h-full px-4">
                 <Link href="/">
-                    <Text className="text-2xl italic font-black text-white hover:opacity-90">
+                    <Text className="text-2xl italic font-black text-neutral-variant-50 hover:opacity-90">
                         Dusk&Dawn
                     </Text>
                 </Link>
