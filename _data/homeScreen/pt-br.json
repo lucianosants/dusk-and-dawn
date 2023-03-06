@@ -1,5 +1,11 @@
 {
     "body": {
+        "hero": {
+            "title": "Bem-vindo à Dusk & Dawn - Descubra seu novo lugar favorito para fazer compras",
+            "subtitle": "A Dusk & Dawn é uma loja de varejo online com uma ampla variedade de produtos, incluindo moda, tecnologia e casa. Oferecemos envio rápido e excelente atendimento ao cliente, ajudando nossos clientes a encontrar seu próprio estilo e se sentirem confiantes e bonitos o dia todo.",
+            "description": "Confira nossa variedade de produtos para todos os estilos e ocasiões. Role para baixo e encontre o que você está procurando agora!",
+            "image": "/images/hero_pattern.svg"
+        },
         "title_category": "Categorias",
         "categories": ["Tecnologia", "Casa e Decoração", "Roupas"]
     }
