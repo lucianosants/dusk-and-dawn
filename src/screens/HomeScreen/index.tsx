@@ -33,7 +33,7 @@ export default function HomeScreen() {
                 image={image}
             />
 
-            <Box className="flex flex-col gap-8">
+            <Box className="flex flex-col min-h-screen gap-8">
                 <h2 className="text-2xl font-bold text-neutral-800">
                     {data.body.title_category}
                 </h2>
