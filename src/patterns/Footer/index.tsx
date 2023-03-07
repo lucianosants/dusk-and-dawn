@@ -15,7 +15,7 @@ interface LinksProps {
 function Links({ title, links }: LinksProps) {
     return (
         <Box className="flex flex-col gap-2">
-            <Text as="strong" className="text-lg text-primary-999">
+            <Text as="strong" className="text-lg text-white">
                 {title}
             </Text>
 
@@ -59,7 +59,7 @@ export default function Footer() {
     return (
         <Box
             as="footer"
-            className="bg-gradient-to-r from-danger-500 to-primary-600">
+            className="bg-gradient-to-r from-danger-600 to-primary-600">
             <Box className="container flex flex-col flex-wrap justify-between gap-4 px-4 mx-auto sm:flex-row py-9">
                 <Box>
                     <Text className="text-2xl italic font-black text-neutral-variant-50 hover:opacity-90">

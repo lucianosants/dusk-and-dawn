@@ -1,10 +1,7 @@
 import { FormEvent, useState } from 'react';
 import Link from 'next/link';
-import {
-    AiOutlineSearch,
-    AiOutlineShoppingCart,
-    AiOutlineUser,
-} from 'react-icons/ai';
+import { AiOutlineSearch, AiOutlineUser } from 'react-icons/ai';
+import { HiOutlineShoppingBag } from 'react-icons/hi';
 
 import Box from '@/src/components/Box';
 import Text from '@/src/components/Text';
@@ -18,7 +15,7 @@ export default function Header() {
     };
 
     return (
-        <Box className="fixed flex justify-center w-full h-16 bg-gradient-to-l from-primary-600 to-danger-500">
+        <Box className="fixed flex justify-center w-full h-16 bg-gradient-to-r from-danger-600 to-primary-600">
             <Box
                 as="header"
                 className="container flex items-center justify-between flex-1 h-full px-4">
@@ -60,7 +57,7 @@ export default function Header() {
                             data-count={count}
                             as="span"
                             className="cart__notification">
-                            <AiOutlineShoppingCart size={28} />
+                            <HiOutlineShoppingBag size={28} />
                         </Text>
                     </Link>
 

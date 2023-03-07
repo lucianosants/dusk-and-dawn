@@ -19,7 +19,7 @@ export default function Hero({
     return (
         <Box
             as="section"
-            className="w-screen mx-auto mb-8 bg-gradient-to-l from-primary-600 to-danger-500">
+            className="w-screen mx-auto mb-8 bg-gradient-to-r from-danger-600 to-primary-600">
             <Box className="container flex items-center justify-between px-4 mx-auto p-container">
                 <Box className="flex flex-col w-full lg:w-1/2">
                     <Text
