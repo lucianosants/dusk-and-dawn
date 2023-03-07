@@ -3,11 +3,15 @@ import Link from 'next/link';
 import { AiOutlineSearch, AiOutlineUser } from 'react-icons/ai';
 import { HiOutlineShoppingBag } from 'react-icons/hi';
 
+import data from '@/_data/header/pt-br.json';
+
 import Box from '@/src/components/Box';
 import Text from '@/src/components/Text';
 
 export default function Header() {
     const [count, setCount] = useState(0);
+
+    const { brand, label_search, placeholder_search } = data;
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault();
@@ -21,7 +25,7 @@ export default function Header() {
                 className="container flex items-center justify-between flex-1 h-full px-4">
                 <Link href="/">
                     <Text className="text-2xl italic font-black text-neutral-variant-50 hover:opacity-90">
-                        Dusk&Dawn
+                        {brand}
                     </Text>
                 </Link>
 
@@ -30,7 +34,7 @@ export default function Header() {
                         onSubmit={handleSubmit}
                         className="flex items-center justify-between flex-1 gap-3 px-3 py-2 rounded-full bg-neutral-variant-50 focus-within:bg-primary-50 focus-within:outline hover:bg-primary-50">
                         <label htmlFor="search" className="sr-only">
-                            Pesquise por um produto em estoque
+                            {placeholder_search}
                         </label>
 
                         <input
@@ -38,7 +42,7 @@ export default function Header() {
                             type="text"
                             id="search"
                             autoComplete="off"
-                            placeholder="Pesquise por um produto..."
+                            placeholder={label_search}
                         />
 
                         <button type="submit" title="Pesquisar produto">
