@@ -1,0 +1,44 @@
+{
+    "brand": "Dusk&Dawn",
+    "all_links": {
+        "enterprise": {
+            "title": "Empresa",
+            "links": ["Sobre", "Fazer Parte", "Contato Comercial"]
+        },
+        "communities": {
+            "title": "Comunidade",
+            "links": [
+                "Para Vendedores",
+                "Desenvolvedores",
+                "Publicidade",
+                "Investidores",
+                "Fornecedores"
+            ]
+        },
+        "useful_links": {
+            "title": "Links Úteis",
+            "links": ["Suporte", "Blog", "Aplicativo"]
+        }
+    },
+    "social_links": {
+        "instagram": {
+            "title": "Lnstagram",
+            "url": "https://instagram.com/lucianosants.dev"
+        },
+        "linkedin": {
+            "title": "Linkedin",
+            "url": "https://linkedin.com/in/lucianosants"
+        },
+        "github": {
+            "title": "Github",
+            "url": "https://github.com/lucianosants"
+        }
+    },
+    "legal_links": [
+        "Centro de Privacidade",
+        "Politica de Segurança",
+        "Termos de Uso",
+        "Condições de Uso"
+    ],
+    "copyright": "© 2023 Dusk&Dawn by lucianosants"
+}
