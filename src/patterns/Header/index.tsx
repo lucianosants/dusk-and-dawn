@@ -1,7 +1,9 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useContext } from 'react';
 import Link from 'next/link';
 import { AiOutlineSearch, AiOutlineUser } from 'react-icons/ai';
 import { HiOutlineShoppingBag } from 'react-icons/hi';
+
+import { CartContext } from '@/src/context/CartContext';
 
 import data from '@/_data/header/pt-br.json';
 
@@ -9,7 +11,7 @@ import Box from '@/src/components/Box';
 import Text from '@/src/components/Text';
 
 export default function Header() {
-    const [count, setCount] = useState(0);
+    const { cart } = useContext(CartContext);
 
     const { brand, label_search, placeholder_search } = data;
 
@@ -56,9 +58,9 @@ export default function Header() {
                 </Box>
 
                 <Box className="flex gap-6">
-                    <Link href="#">
+                    <Link href="/cart">
                         <Text
-                            data-count={count}
+                            data-count={cart.length}
                             as="span"
                             className="cart__notification">
                             <HiOutlineShoppingBag size={28} />
