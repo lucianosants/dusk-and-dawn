@@ -46,6 +46,7 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     const addToCart = (item: ProductProps) => {
         if (alreadyInCart(item.id)) {
             alert('Este item já foi adicionado ao carrinho.');
+
             return;
         }
         setCart([...cart, { product: item, quantity: 1 }]);
@@ -75,14 +76,14 @@ export const CartProvider = ({ children }: CartProviderProps) => {
         );
     };
 
-    const getTotalPrice = () => {
+    const getTotalPrice = (): number => {
         return cart.reduce((total, cartItem) => {
-            return total + cartItem.product.price * cartItem.quantity;
+            const price = Number(
+                total + cartItem.product.price * cartItem.quantity
+            );
+            return price;
         }, 0);
     };
-
-    console.log('Produtos no carrinho', cart);
-    console.log('Preço total', getTotalPrice().toFixed(2));
 
     return (
         <CartContext.Provider
