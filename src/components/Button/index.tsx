@@ -1,17 +1,13 @@
-import { ReactNode } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 
-interface ButtonProps {
-    children: ReactNode;
-    onClick?: () => void;
-}
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {}
 
-export default function Button({ children, onClick }: ButtonProps) {
+export default function Button({ type, ...props }: ButtonProps) {
     return (
         <button
-            type="button"
-            onClick={onClick}
-            className="px-4 py-2 font-semibold rounded-lg text-neutral-variant-999 bg-primary-500 hover:bg-primary-600 hover:text-primary-100">
-            {children}
-        </button>
+            {...props}
+            type={type || 'button'}
+            className="px-4 py-2 font-semibold rounded-lg text-neutral-variant-999 bg-primary-500 hover:bg-primary-600 hover:text-primary-100"
+        />
     );
 }

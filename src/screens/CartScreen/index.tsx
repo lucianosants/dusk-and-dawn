@@ -7,7 +7,6 @@ import Container from '@/src/components/Container';
 import Text from '@/src/components/Text';
 import EmptyCart from '@/src/components/EmptyCart';
 import ProductCart from '@/src/components/ProductCart';
-
 import Button from '@/src/components/Button';
 
 export default function CartScreen() {
@@ -29,7 +28,7 @@ export default function CartScreen() {
                     </Text>
 
                     <Box className="flex flex-col w-full gap-6">
-                        {cart?.map((product) => {
+                        {cart?.map((product, index) => {
                             const {
                                 id,
                                 available,
@@ -40,7 +39,7 @@ export default function CartScreen() {
                             } = product.product;
                             return (
                                 <Box
-                                    key={id}
+                                    key={`${index} - ${id}`}
                                     className="flex flex-col items-center justify-start w-full p-3 shadow sm:items-start sm:justify-between bg-neutral-50 sm:flex-row">
                                     <ProductCart
                                         cover={cover}

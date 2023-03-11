@@ -1,10 +1,13 @@
 import Head from 'next/head';
 
 import HomeScreen from '@/src/screens/HomeScreen';
-import Modal from '@/src/components/Modal';
+
 import ProductScreen from '@/src/screens/ProductScreen';
+import { useState } from 'react';
 
 export default function Home() {
+    const [isOpen, setIsOpen] = useState(true);
+
     return (
         <>
             <Head>
@@ -19,9 +22,7 @@ export default function Home() {
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Modal>
-                <ProductScreen />
-            </Modal>
+
             <HomeScreen />
         </>
     );

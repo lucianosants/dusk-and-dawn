@@ -1,3 +1,5 @@
+import { forwardRef, Ref } from 'react';
+
 interface BoxProps {
     as?:
         | 'div'
@@ -13,7 +15,12 @@ interface BoxProps {
     children?: React.ReactNode;
 }
 
-export default function Box({ children, as, ...props }: BoxProps) {
+const Box = forwardRef(({ as, ...props }: BoxProps, ref: Ref<HTMLElement>) => {
     const Tag = as || 'div';
-    return <Tag {...props}>{children}</Tag>;
-}
+
+    return <Tag {...props} />;
+});
+
+Box.displayName = 'Box';
+
+export default Box;

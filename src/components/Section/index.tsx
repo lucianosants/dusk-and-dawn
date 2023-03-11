@@ -26,6 +26,8 @@ export default function Section({ currentCategory }: SectionProps) {
                                 cover={product.cover}
                                 name={product.name}
                                 price={product.price}
+                                description={product.description}
+                                id={product.id}
                             />
                         );
                     })}
