@@ -1,0 +1,3 @@
+const { NEXT_PUBLIC_API_KEY, STRIPE_SECRET_KEY } = process.env;
+
+export { NEXT_PUBLIC_API_KEY, STRIPE_SECRET_KEY };

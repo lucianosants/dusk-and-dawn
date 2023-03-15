@@ -15,6 +15,37 @@ export default function CartScreen() {
 
     const totalPrice = Number(getTotalPrice()).toFixed(2);
 
+    // experimental items
+    const items = [
+        {
+            price: 'price_1Mm1SzGJXxfMeJBxxpTo1y4p',
+            quantity: 4,
+        },
+        {
+            price: 'price_1Mm1VNGJXxfMeJBxuJ6uo5NS',
+            quantity: 5,
+        },
+    ];
+
+    const handleCheckout = async () => {
+        const response = await fetch('/api/checkout_session', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+
+            body: JSON.stringify({ items }),
+        });
+
+        if (!response.ok) {
+            console.log('Ocorreu um erro!');
+        }
+
+        const session = await response.json();
+
+        return session;
+    };
+
     return (
         <Container isCol={!cart.length}>
             {!cart.length ? (
@@ -64,7 +95,9 @@ export default function CartScreen() {
                             </Text>{' '}
                         </Text>
 
-                        <Button>Finalizar Compras</Button>
+                        <Button type="button" onClick={handleCheckout}>
+                            Finalizar Compras
+                        </Button>
                     </Box>
                 </Box>
             )}
