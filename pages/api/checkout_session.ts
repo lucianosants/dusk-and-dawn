@@ -2,33 +2,43 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { STRIPE_SECRET_KEY } from '@/src/config/environments';
 
-const stripe = require('stripe')(STRIPE_SECRET_KEY);
+import { Stripe } from 'stripe';
+
+const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2022-11-15' });
 
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse
 ) {
     if (req.method === 'POST') {
+        const { items } = req.body;
+
         try {
-            const { items } = req.body;
+            const getItems = await items.map((item: any) => {
+                return {
+                    price: item.price,
+                    quantity: item.quantity,
+                };
+            });
 
-            // Create Checkout Sessions from body params.
-            const session = await stripe.checkout.sessions.create({
-                line_items: items.map((item: any) => {
-                    return {
-                        price: item.price,
-                        quantity: item.quantity,
-                    };
-                }),
-
+            const params: Stripe.Checkout.SessionCreateParams = {
                 mode: 'payment',
+                line_items: getItems,
                 success_url: `${req.headers.origin}/?success=true`,
                 cancel_url: `${req.headers.origin}/?canceled=true`,
-            });
-            res.redirect(303, session.url);
+            };
+
+            const checkoutSession: Stripe.Checkout.Session =
+                await stripe.checkout.sessions.create(params);
+
+            // console.log(checkoutSession.url);
+
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.redirect(303, checkoutSession.url as string);
+            res.status(200).json({ data: checkoutSession });
         } catch (error: any) {
             res.status(error.statusCode || 500).json(error.message);
-            console.log(error);
+            console.log('aqui vai o erro no servidor', error);
         }
     } else {
         res.setHeader('Allow', 'POST');

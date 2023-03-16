@@ -1,5 +1,7 @@
 import { useContext } from 'react';
 
+import { loadStripe, Stripe } from '@stripe/stripe-js';
+
 import { CartContext } from '@/src/context/CartContext';
 
 import Box from '@/src/components/Box';
@@ -9,13 +11,9 @@ import EmptyCart from '@/src/components/EmptyCart';
 import ProductCart from '@/src/components/ProductCart';
 import Button from '@/src/components/Button';
 
-export default function CartScreen() {
-    const { cart, addQuantity, removeQuantity, getTotalPrice, removeToCart } =
-        useContext(CartContext);
+let stripePromise: Promise<Stripe | null>;
 
-    const totalPrice = Number(getTotalPrice()).toFixed(2);
-
-    // experimental items
+const fetchPostItems = async () => {
     const items = [
         {
             price: 'price_1Mm1SzGJXxfMeJBxxpTo1y4p',
@@ -27,23 +25,43 @@ export default function CartScreen() {
         },
     ];
 
-    const handleCheckout = async () => {
+    try {
         const response = await fetch('/api/checkout_session', {
             method: 'POST',
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'same-origin',
             headers: {
                 'Content-Type': 'application/json',
             },
+            redirect: 'follow',
+            referrerPolicy: 'no-referrer',
 
             body: JSON.stringify({ items }),
         });
+        // console.log(response);
 
-        if (!response.ok) {
-            console.log('Ocorreu um erro!');
-        }
+        return await response.json();
+    } catch (error) {
+        console.log('ocorre um erro');
+    }
+};
 
-        const session = await response.json();
+const getStripe = () => {
+    if (!stripePromise)
+        stripePromise = loadStripe(process.env.NEXT_PUBLIC_API_KEY);
+    return stripePromise;
+};
 
-        return session;
+export default function CartScreen() {
+    const { cart, addQuantity, removeQuantity, getTotalPrice, removeToCart } =
+        useContext(CartContext);
+
+    const totalPrice = Number(getTotalPrice()).toFixed(2);
+
+    const handleCheckout = async () => {
+        const checkout = await fetchPostItems();
+        const stripe = await getStripe();
     };
 
     return (
