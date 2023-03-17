@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 
-import { loadStripe, Stripe } from '@stripe/stripe-js';
-
 import { CartContext } from '@/src/context/CartContext';
+
+import { checkout } from '@/src/utils/checkout';
 
 import Box from '@/src/components/Box';
 import Container from '@/src/components/Container';
@@ -11,48 +11,6 @@ import EmptyCart from '@/src/components/EmptyCart';
 import ProductCart from '@/src/components/ProductCart';
 import Button from '@/src/components/Button';
 
-let stripePromise: Promise<Stripe | null>;
-
-const fetchPostItems = async () => {
-    const items = [
-        {
-            price: 'price_1Mm1SzGJXxfMeJBxxpTo1y4p',
-            quantity: 4,
-        },
-        {
-            price: 'price_1Mm1VNGJXxfMeJBxuJ6uo5NS',
-            quantity: 5,
-        },
-    ];
-
-    try {
-        const response = await fetch('/api/checkout_session', {
-            method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache',
-            credentials: 'same-origin',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            redirect: 'follow',
-            referrerPolicy: 'no-referrer',
-
-            body: JSON.stringify({ items }),
-        });
-        // console.log(response);
-
-        return await response.json();
-    } catch (error) {
-        console.log('ocorre um erro');
-    }
-};
-
-const getStripe = () => {
-    if (!stripePromise)
-        stripePromise = loadStripe(process.env.NEXT_PUBLIC_API_KEY);
-    return stripePromise;
-};
-
 export default function CartScreen() {
     const { cart, addQuantity, removeQuantity, getTotalPrice, removeToCart } =
         useContext(CartContext);
@@ -60,8 +18,7 @@ export default function CartScreen() {
     const totalPrice = Number(getTotalPrice()).toFixed(2);
 
     const handleCheckout = async () => {
-        const checkout = await fetchPostItems();
-        const stripe = await getStripe();
+        await checkout();
     };
 
     return (

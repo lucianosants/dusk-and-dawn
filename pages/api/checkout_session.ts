@@ -24,21 +24,17 @@ export default async function handler(
             const params: Stripe.Checkout.SessionCreateParams = {
                 mode: 'payment',
                 line_items: getItems,
-                success_url: `${req.headers.origin}/?success=true`,
-                cancel_url: `${req.headers.origin}/?canceled=true`,
+                success_url: `${req.headers.origin}/cart`,
+                cancel_url: `${req.headers.origin}/cart`,
             };
 
             const checkoutSession: Stripe.Checkout.Session =
                 await stripe.checkout.sessions.create(params);
 
-            // console.log(checkoutSession.url);
-
-            res.setHeader('Access-Control-Allow-Origin', '*');
-            res.redirect(303, checkoutSession.url as string);
             res.status(200).json({ data: checkoutSession });
         } catch (error: any) {
             res.status(error.statusCode || 500).json(error.message);
-            console.log('aqui vai o erro no servidor', error);
+            console.log(error.message);
         }
     } else {
         res.setHeader('Allow', 'POST');
