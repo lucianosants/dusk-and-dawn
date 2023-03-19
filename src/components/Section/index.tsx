@@ -1,17 +1,18 @@
-import Box from '../Box';
+import { ProductProps } from '@/src/@types/products';
 
-import data from '@/_data/data.json';
+import Box from '../Box';
 import Card from '../Card';
 
 interface SectionProps {
     currentCategory: string;
+    products: ProductProps[];
 }
 
-export default function Section({ currentCategory }: SectionProps) {
+export default function Section({ currentCategory, products }: SectionProps) {
     return (
         <Box as="section">
             <Box className="flex flex-wrap justify-start gap-3 lg:gap-[1.3rem] md:gap-[2.1rem]">
-                {data.categories
+                {products
                     .filter((item) => {
                         const category = item.category;
 
@@ -20,14 +21,14 @@ export default function Section({ currentCategory }: SectionProps) {
                     .map((product, i) => {
                         return (
                             <Card
-                                key={`${i} - ${product.id}`}
-                                available={true}
+                                key={`${i} - ${product.name}`}
+                                available={product.available}
                                 category={product.category}
                                 cover={product.cover}
                                 name={product.name}
                                 price={product.price}
                                 description={product.description}
-                                id={product.id}
+                                _id_stripe={product._id_stripe}
                             />
                         );
                     })}

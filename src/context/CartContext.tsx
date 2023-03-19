@@ -1,13 +1,6 @@
 import { createContext, ReactNode, useState } from 'react';
 
-type ProductProps = {
-    id: string;
-    available: boolean;
-    category: string;
-    cover: string;
-    name: string;
-    price: number;
-};
+import { ProductProps } from '../@types/products';
 
 type CartProps = {
     cart: CartItem[];
@@ -40,11 +33,11 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     const [cart, setCart] = useState<CartItem[]>([]);
 
     const alreadyInCart = (productId: string) => {
-        return cart.some((item) => item.product.id === productId);
+        return cart.some((item) => item.product._id_stripe === productId);
     };
 
     const addToCart = (item: ProductProps) => {
-        if (alreadyInCart(item.id)) {
+        if (alreadyInCart(item._id_stripe)) {
             alert('Este item já foi adicionado ao carrinho.');
 
             return;
@@ -53,13 +46,13 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     };
 
     const removeToCart = (productId: string) => {
-        setCart(cart.filter((item) => item.product.id !== productId));
+        setCart(cart.filter((item) => item.product._id_stripe !== productId));
     };
 
     const addQuantity = (productId: string) => {
         setCart(
             cart.map((cartItem) =>
-                cartItem.product.id === productId
+                cartItem.product._id_stripe === productId
                     ? { ...cartItem, quantity: cartItem.quantity + 1 }
                     : cartItem
             )
@@ -69,7 +62,8 @@ export const CartProvider = ({ children }: CartProviderProps) => {
     const removeQuantity = (productId: string) => {
         setCart(
             cart.map((cartItem) =>
-                cartItem.product.id === productId && cartItem.quantity > 1
+                cartItem.product._id_stripe === productId &&
+                cartItem.quantity > 1
                     ? { ...cartItem, quantity: cartItem.quantity - 1 }
                     : cartItem
             )

@@ -3,19 +3,11 @@ import * as Dialog from '@radix-ui/react-dialog';
 
 import { CartContext } from '@/src/context/CartContext';
 
+import { ProductProps } from '@/src/@types/products';
+
 import Box from '../Box';
 import Text from '../Text';
 import ProductScreen from '@/src/screens/ProductScreen';
-
-type ProductProps = {
-    id: string;
-    available: boolean;
-    category: string;
-    cover: string;
-    name: string;
-    price: number;
-    description: string;
-};
 
 export default function Card({ ...product }: ProductProps) {
     const { addToCart } = useContext(CartContext);
@@ -52,10 +44,10 @@ export default function Card({ ...product }: ProductProps) {
                         <ProductScreen
                             description={product.description}
                             cover={product.cover}
-                            isAvailable={product.available}
+                            available={product.available}
                             price={product.price}
                             name={product.name}
-                            id={product.id}
+                            _id_stripe={product._id_stripe}
                             addToCart={() => addToCart({ ...product })}
                         />
                     </Box>
