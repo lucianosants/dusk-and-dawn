@@ -1,10 +1,11 @@
+import { Stripe } from 'stripe';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { STRIPE_SECRET_KEY } from '@/src/config/environments';
+import { stripe_api } from '@/src/config/environments';
 
-import { Stripe } from 'stripe';
-
-const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: '2022-11-15' });
+const stripe = new Stripe(stripe_api.secret, {
+    apiVersion: '2022-11-15',
+});
 
 export default async function handler(
     req: NextApiRequest,
