@@ -1,13 +1,18 @@
 import Head from 'next/head';
+import { GetStaticProps } from 'next';
+import { collection, getDocs } from 'firebase/firestore';
+
+import { db } from '@/src/firebase/config';
+
+import { ProductProps } from '@/src/@types/products';
 
 import HomeScreen from '@/src/screens/HomeScreen';
 
-import ProductScreen from '@/src/screens/ProductScreen';
-import { useState } from 'react';
+interface ProductsProps {
+    products: ProductProps[];
+}
 
-export default function Home() {
-    const [isOpen, setIsOpen] = useState(true);
-
+export default function Home({ products }: ProductsProps) {
     return (
         <>
             <Head>
@@ -23,7 +28,35 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <HomeScreen />
+            <HomeScreen products={products} />
         </>
     );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+    const collectionRef = collection(db, 'products');
+
+    const querySnapshot = await getDocs(collectionRef);
+
+    if (querySnapshot.empty) {
+        return {
+            props: {
+                products: [],
+            },
+        };
+    }
+
+    const products = querySnapshot.docs.map((doc) => {
+        const data = doc.data();
+
+        return {
+            ...data,
+        };
+    });
+
+    return {
+        props: {
+            products: products,
+        },
+    };
+};

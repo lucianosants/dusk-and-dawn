@@ -7,10 +7,15 @@ import Container from '@/src/components/Container';
 import Box from '@/src/components/Box';
 import Hero from '@/src/components/Hero';
 import Section from '@/src/components/Section';
+import { ProductProps } from '@/src/@types/products';
 
-type Categories = 'technology' | 'house & decoration' | 'clothes';
+type Categories = 'technology' | 'house and decoration' | 'clothes';
 
-export default function HomeScreen() {
+interface HomeScreenProps {
+    products: ProductProps[];
+}
+
+export default function HomeScreen({ products }: HomeScreenProps) {
     const [currentCategory, setCurrentCategory] =
         useState<Categories>('technology');
 
@@ -20,7 +25,7 @@ export default function HomeScreen() {
     const handleCategoryChange = (category: string) => {
         if (category === 'Tecnologia') setCurrentCategory('technology');
         if (category === 'Casa e Decoração')
-            setCurrentCategory('house & decoration');
+            setCurrentCategory('house and decoration');
         if (category === 'Roupas') setCurrentCategory('clothes');
     };
 
@@ -54,7 +59,10 @@ export default function HomeScreen() {
                     })}
                 </ToggleGroup.Root>
 
-                <Section currentCategory={currentCategory} />
+                <Section
+                    products={products}
+                    currentCategory={currentCategory}
+                />
             </Box>
         </Container>
     );

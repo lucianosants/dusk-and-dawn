@@ -3,28 +3,20 @@ import Image from 'next/image';
 import Box from '@/src/components/Box';
 import Button from '@/src/components/Button';
 import Text from '@/src/components/Text';
+import { ProductProps } from '@/src/@types/products';
 
-interface Props {
-    cover: string;
-    name: string;
-    price: number;
-    isAvailable: boolean;
-    description: string;
-    id: string;
+interface Props extends ProductProps {
     addToCart: () => void;
 }
 
 export default function ProductScreen({
     cover,
-    id,
     description,
-    isAvailable,
+    available,
     price,
     name,
     addToCart,
 }: Props) {
-    const data = { cover, id };
-
     return (
         <Box className="flex flex-col justify-between sm:flex-row">
             <Image
@@ -48,12 +40,18 @@ export default function ProductScreen({
 
                 <Text
                     as="p"
-                    className="mb-2 text-sm text-right text-secondary-900">
-                    {isAvailable ? 'Disponivel em estoque' : 'Não disponivel'}
+                    className={`mb-2 text-sm text-right ${
+                        available ? 'text-secondary-900' : 'text-danger-600'
+                    } `}>
+                    {available ? 'Disponivel em estoque' : 'Não disponivel'}
                 </Text>
 
                 <Box className="flex flex-col items-end justify-end gap-2 mb-2 ">
-                    <Button onClick={addToCart}>Adicionar ao carrinho</Button>
+                    <Button
+                        onClick={addToCart}
+                        disabled={!available ? true : false}>
+                        Adicionar ao carrinho
+                    </Button>
                 </Box>
 
                 <Text as="p" className="font-bold text-neutral-variant-999">

@@ -1,15 +1,9 @@
-const checkout = async () => {
-    const items = [
-        {
-            price: 'price_1Mm1SzGJXxfMeJBxxpTo1y4p',
-            quantity: 3,
-        },
-        {
-            price: 'price_1Mm1VNGJXxfMeJBxuJ6uo5NS',
-            quantity: 5,
-        },
-    ];
+type Props = Array<{
+    price: string;
+    quantity: number;
+}>;
 
+const checkout = async (items: Props) => {
     try {
         const response = await fetch('/api/checkout_session', {
             method: 'POST',

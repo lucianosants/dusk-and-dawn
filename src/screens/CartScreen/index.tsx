@@ -17,8 +17,15 @@ export default function CartScreen() {
 
     const totalPrice = Number(getTotalPrice()).toFixed(2);
 
+    const products = cart.map((product) => {
+        return {
+            price: product.product._id_stripe,
+            quantity: product.quantity,
+        };
+    });
+
     const handleCheckout = async () => {
-        await checkout();
+        await checkout(products);
     };
 
     return (
@@ -35,26 +42,24 @@ export default function CartScreen() {
 
                     <Box className="flex flex-col w-full gap-6">
                         {cart?.map((product, index) => {
-                            const {
-                                id,
-                                available,
-                                category,
-                                cover,
-                                name,
-                                price,
-                            } = product.product;
+                            const { _id_stripe, cover, name, price } =
+                                product.product;
                             return (
                                 <Box
-                                    key={`${index} - ${id}`}
+                                    key={`${index} - ${_id_stripe}`}
                                     className="flex flex-col items-center justify-start w-full p-3 shadow sm:items-start sm:justify-between bg-neutral-50 sm:flex-row">
                                     <ProductCart
                                         cover={cover}
                                         name={name}
                                         price={price}
                                         quantity={product.quantity}
-                                        add={() => addQuantity(id)}
-                                        remove={() => removeQuantity(id)}
-                                        deleteItem={() => removeToCart(id)}
+                                        add={() => addQuantity(_id_stripe)}
+                                        remove={() =>
+                                            removeQuantity(_id_stripe)
+                                        }
+                                        deleteItem={() =>
+                                            removeToCart(_id_stripe)
+                                        }
                                     />
                                 </Box>
                             );
