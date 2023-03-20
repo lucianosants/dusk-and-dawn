@@ -1,4 +1,7 @@
 {
+    "head": {
+        "title": "Dusk&Dawn // Cart"
+    },
     "empty": {
         "empty_description": "Seu carrinho está vazio.",
         "empty_btn_function": "Iniciar compras"
