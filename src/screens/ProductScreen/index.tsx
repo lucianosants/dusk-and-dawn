@@ -7,7 +7,7 @@ import { ProductProps } from '@/src/@types/products';
 import { useState } from 'react';
 import Notification from '@/src/components/Notification';
 
-import data from '@/_data/productScreen/pt-BR.json';
+import data from '@/_data/productScreen/pt-br.json';
 
 interface Props extends ProductProps {
     addToCart: () => void;
