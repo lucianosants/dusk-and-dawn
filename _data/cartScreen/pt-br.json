@@ -1,0 +1,18 @@
+{
+    "empty": {
+        "empty_description": "Seu carrinho está vazio.",
+        "empty_btn_function": "Iniciar compras"
+    },
+    "product": {
+        "about": "Informações do Produto",
+        "total": "Informações do Produto",
+        "btn_decrement": "-",
+        "remove": "Remover",
+        "btn_increment": "+"
+    },
+    "screen": {
+        "title": " Carrinho de Compras",
+        "total_price": "Valor Total",
+        "btn_buy": "Finalizar Compras"
+    }
+}

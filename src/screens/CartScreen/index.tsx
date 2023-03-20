@@ -1,5 +1,7 @@
 import { useContext } from 'react';
 
+import data from '@/_data/cartScreen/pt-br.json';
+
 import { CartContext } from '@/src/context/CartContext';
 
 import { checkout } from '@/src/utils/checkout';
@@ -16,6 +18,8 @@ export default function CartScreen() {
         useContext(CartContext);
 
     const totalPrice = Number(getTotalPrice()).toFixed(2);
+
+    const { screen } = data;
 
     const products = cart.map((product) => {
         return {
@@ -37,7 +41,7 @@ export default function CartScreen() {
                     <Text
                         as="h2"
                         className="w-full mb-4 text-2xl font-bold text-center sm:text-start">
-                        Carrinho de Compras
+                        {screen.title}
                     </Text>
 
                     <Box className="flex flex-col w-full gap-6">
@@ -68,7 +72,7 @@ export default function CartScreen() {
 
                     <Box className="flex flex-col items-center justify-start w-full p-5 mt-8 shadow sm:items-center sm:justify-between bg-neutral-50 sm:flex-row">
                         <Text as="p" className="mb-6 text-xl font-bold sm:mb-0">
-                            Valor Total:{' '}
+                            {`${screen.total_price}: `}
                             <Text className="p-2 rounded-lg text-primary-50 bg-primary-600">
                                 <Text className="font-normal">R$</Text>{' '}
                                 {totalPrice}
@@ -76,7 +80,7 @@ export default function CartScreen() {
                         </Text>
 
                         <Button type="button" onClick={handleCheckout}>
-                            Finalizar Compras
+                            {screen.btn_buy}
                         </Button>
                     </Box>
                 </Box>

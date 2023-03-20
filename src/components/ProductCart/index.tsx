@@ -1,5 +1,9 @@
 import Image from 'next/image';
 import React from 'react';
+
+import data from '@/_data/cartScreen/pt-br.json';
+const { product } = data;
+
 import Box from '../Box';
 import Button from '../Button';
 import Text from '../Text';
@@ -37,7 +41,7 @@ const ProductInfos = ({ cover, name, price }: ProductInfosProps) => {
                 <Text
                     as="p"
                     className="mt-6 cursor-pointer text-tertiary-500 hover:text-primary-700">
-                    Informações do Produto
+                    {product.about}
                 </Text>
             </Box>
         </Box>
@@ -66,7 +70,7 @@ export default function ProductCart({
 
             <Box className="sm:text-end text-start">
                 <Text as="p" className="mt-4 text-sm sm:mt-0">
-                    Total
+                    {product.total}
                 </Text>
 
                 <Text
@@ -76,14 +80,14 @@ export default function ProductCart({
                 </Text>
 
                 <Box className="flex items-center gap-3 my-3 mb-2 font-medium">
-                    <Button onClick={remove}>-</Button>
+                    <Button onClick={remove}>{product.btn_decrement}</Button>
 
                     <Text className="text-3xl font-bold text-primary-700">
                         {quantity}
                     </Text>
 
-                    <Button onClick={add}>+</Button>
-                    <Button onClick={deleteItem}>Remover</Button>
+                    <Button onClick={add}>{product.btn_increment}</Button>
+                    <Button onClick={deleteItem}>{product.remove}</Button>
                 </Box>
             </Box>
         </>

@@ -7,6 +7,8 @@ import { ProductProps } from '@/src/@types/products';
 import { useState } from 'react';
 import Notification from '@/src/components/Notification';
 
+import data from '@/_data/productScreen/pt-BR.json';
+
 interface Props extends ProductProps {
     addToCart: () => void;
 }
@@ -20,6 +22,8 @@ export default function ProductScreen({
     addToCart,
 }: Props) {
     const [isOpen, setIsOpen] = useState(false);
+
+    const { btn_cart_function, isAvailable, subtitle_about } = data;
 
     const handleAddItem = () => {
         addToCart();
@@ -57,19 +61,19 @@ export default function ProductScreen({
                         className={`mb-2 text-sm text-right ${
                             available ? 'text-secondary-900' : 'text-danger-600'
                         } `}>
-                        {available ? 'Disponivel em estoque' : 'Não disponivel'}
+                        {available ? isAvailable[0] : isAvailable[1]}
                     </Text>
 
                     <Box className="flex flex-col items-end justify-end gap-2 mb-2 ">
                         <Button
                             onClick={handleAddItem}
                             disabled={!available ? true : false}>
-                            Adicionar ao carrinho
+                            {btn_cart_function}
                         </Button>
                     </Box>
 
                     <Text as="p" className="font-bold text-neutral-variant-999">
-                        Sobre o produto
+                        {subtitle_about}
                     </Text>
 
                     <Text as="p" className="w-64 text-sm">

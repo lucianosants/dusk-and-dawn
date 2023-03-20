@@ -67,7 +67,7 @@ export default function Header() {
                         </Text>
                     </Link>
 
-                    <Link href="/auth/register">
+                    <Link href="/">
                         <Text
                             as="span"
                             className="text-neutral-variant-50 hover:text-neutral-variant-100">
