@@ -66,8 +66,8 @@ export default function CartScreen() {
                         })}
                     </Box>
 
-                    <Box className="flex flex-col items-center justify-start w-full p-5 mt-8 shadow sm:items-start sm:justify-between bg-neutral-50 sm:flex-row">
-                        <Text as="p" className="text-xl font-bold">
+                    <Box className="flex flex-col items-center justify-start w-full p-5 mt-8 shadow sm:items-center sm:justify-between bg-neutral-50 sm:flex-row">
+                        <Text as="p" className="mb-6 text-xl font-bold sm:mb-0">
                             Valor Total:{' '}
                             <Text className="p-2 rounded-lg text-primary-50 bg-primary-600">
                                 <Text className="font-normal">R$</Text>{' '}
