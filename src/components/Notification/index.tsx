@@ -1,6 +1,6 @@
 import Box from '../Box';
 
-import data from '@/_data/productScreen/pt-BR.json';
+import data from '@/_data/productScreen/pt-br.json';
 
 interface NotificationProps {
     isActive: boolean;
