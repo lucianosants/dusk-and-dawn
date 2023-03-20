@@ -1,0 +1,6 @@
+{
+    "isAvailable": ["Disponível em estoque.", "Sem Estoque."],
+    "btn_cart_function": "Adicionar ao carrinho",
+    "subtitle_about": "Sobre o produto.",
+    "notification": "Produto no Carrinho"
+}

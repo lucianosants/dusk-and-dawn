@@ -31,7 +31,7 @@ export default function Header() {
                     </Text>
                 </Link>
 
-                <Box className="w-[60%]">
+                <Box className="w-[60%] hidden sm:block">
                     <form
                         onSubmit={handleSubmit}
                         className="flex items-center justify-between flex-1 gap-3 px-3 py-2 rounded-full bg-neutral-variant-50 focus-within:bg-primary-50 focus-within:outline hover:bg-primary-50">
@@ -67,7 +67,7 @@ export default function Header() {
                         </Text>
                     </Link>
 
-                    <Link href="/auth/register">
+                    <Link href="/">
                         <Text
                             as="span"
                             className="text-neutral-variant-50 hover:text-neutral-variant-100">
